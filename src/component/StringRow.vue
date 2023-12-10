@@ -22,6 +22,9 @@ const isModifNote = computed((): boolean => {
 	const tuning = c.TUNINGS.find(t => t.name === props.guitar.tuningName)!;
 	return tuning.notes[props.strIndex] !== props.str.note;
 });
+const isInvTension = computed((): boolean => {
+	return store.unit == 'lb/in' && ( props.str.tension < 12 || props.str.tension > 26 );
+});
 </script>
 
 <template>
@@ -37,7 +40,7 @@ const isModifNote = computed((): boolean => {
 				@update:note="n => store.changeNote(props.guitar, props.str, n)" />
 		</div>
 		<div>
-			<input type="text" :class="m.tension" :value="props.str.tension.toFixed(2)" disabled />
+			<input type="text" :class="[m.tension, isInvTension ? m.invTension : null]" :value="props.str.tension.toFixed(2)" disabled />
 			{{store.unit}}
 		</div>
 	</div>
@@ -52,6 +55,9 @@ const isModifNote = computed((): boolean => {
 			.tension {
 				width: 3.5em;
 				text-align: right;
+			}
+			.invTension {
+				color: red;
 			}
 		}
 		.strName {

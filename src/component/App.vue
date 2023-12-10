@@ -19,6 +19,7 @@ const store = useStore();
 		</a>
 	</header>
 	<GuitarList />
+	<p>Recommended tension for the standard EverTune bridge: 12 &ndash; 26 lb/in.</p>
 	<LineChart />
 </template>
 

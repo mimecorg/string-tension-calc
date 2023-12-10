@@ -5,7 +5,7 @@ import * as c from './consts';
 
 const useStore = defineStore('string-tension-calc', {
 	state: () => ({
-		unit: 'kg/cm' as IUnit,
+		unit: 'lb/in' as IUnit,
 		guitars: [] as IGuitar[],
 	}),
 	actions: {
